@@ -1,0 +1,40 @@
+[
+  {
+    "name": "angular.core",
+    "children": [
+      {
+        "name": "lifecycles",
+        "children": [
+          {
+            "name": "OnInit",
+            "value": 100
+          },
+          {
+            "name": "OnChange",
+            "value": 100
+          },
+          {
+            "name": "AfterContentInit",
+            "value": 300
+          },
+          {
+            "name": "AfterContentChecked",
+            "value": 200
+          },
+          {
+            "name": "AfterViewInit",
+            "value": 200
+          },
+          {
+            "name": "OnDestroy",
+            "value": 100
+          }
+        ]
+      },
+      {
+        "name": "Component",
+        "value": 500
+      }
+    ]
+  }
+]
