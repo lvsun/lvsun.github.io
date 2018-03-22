@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="/blog/" rel="alternate" type="text/html" /><updated>2018-03-22T13:12:35+01:00</updated><id>/blog/</id><title type="html">沛然作雨🌧️</title><subtitle>下雨的时候，来听听</subtitle><entry><title type="html">关于 t-Test, p-Test</title><link href="/blog/statistik/math/2017/07/13/tTest-pTest.html" rel="alternate" type="text/html" title="关于 t-Test, p-Test" /><published>2017-07-13T13:06:07+02:00</published><updated>2017-07-13T13:06:07+02:00</updated><id>/blog/statistik/math/2017/07/13/tTest-pTest</id><content type="html" xml:base="/blog/statistik/math/2017/07/13/tTest-pTest.html">&lt;p&gt;上次做报告，专门挑了一个自己上统计时没有搞懂原理的东西来讲，以期能让自己重新有时间搞明白：t-Test, p-Test。那会儿考试光学会怎么用了，但是对里面的原理还是不懂，可以说用的是稀里糊涂的，憋的我有点儿难受。仔细钻研了下，发现挺有意思，这些测试是建立在概率的推算基础之上，通俗点儿讲，就是他们为了算出特定概率，用了更大更模糊的概率来建立坐标。我也知道自己当时为什么没彻底理解了，因为证明的过程使用了反向的思维，更加抽象。&lt;/p&gt;
+
+&lt;p&gt;具体根基于高斯的big number theory，它推出：所有的数据分布，当你从中取出一次数据做统计，留下来一笔参数比如平均数啊，方差啊，然后你再从数据中取出一次做统计，留下一笔参数，这样接近无数次的取出（big number），那么最后你的任意参数，比方说平均数，是一个正态分布。&lt;/p&gt;
+
+&lt;p&gt;这个原理最重要的是他不管你原始数据是一个什么分布（distribution），他的参数最终都可能会形成一个正态分布。这就为我们接下来的测试打了一个良好的基础。&lt;/p&gt;
+
+&lt;p&gt;测试，t-Test或者p-Test，都是有一组或两组数据，这就相当于你在一大堆原始数据中抽取了一次，或者两次。那么需要你去用这点儿数据来估计整个大原始数据的一些走向。打个比方，你供职医药企业，生产了1万剂新药，老板想知道它们到底有效与否，条件只允许你做20次实验，你怎么才能从这20个结果中推到出这个批次到底有没有用呢？？&lt;/p&gt;
+
+&lt;p&gt;测试的基础思想就是：你用你得到的数据参数，比如20次实验后有效的平均数，然后用刚才那个定理来推测你得到的平均数在大的分布下是什么概率（根据高斯的那个定理，因为你现在手里有了它的分布），如果是高概率，那么自然很有可能他的实验结果就是真的，如果是低概率，那么很有可能是假的。&lt;/p&gt;
+
+&lt;p&gt;但是实际的测试还有点儿反向做法，就是我们经常一开始架设一个看起来不那么可能的事件为我们要推测概率的事件，然后通过测算它的概率：如果它为真（大概率），那么我们本来要的事件即为假，如果它为假（小概率），那么我们本来推测的即为真。这又涉及到另外的一个关于一级错误，二级错误（不会翻译。。）的论证，这儿就不想细讲了。&lt;/p&gt;</content><author><name></name></author><summary type="html">上次做报告，专门挑了一个自己上统计时没有搞懂原理的东西来讲，以期能让自己重新有时间搞明白：t-Test, p-Test。那会儿考试光学会怎么用了，但是对里面的原理还是不懂，可以说用的是稀里糊涂的，憋的我有点儿难受。仔细钻研了下，发现挺有意思，这些测试是建立在概率的推算基础之上，通俗点儿讲，就是他们为了算出特定概率，用了更大更模糊的概率来建立坐标。我也知道自己当时为什么没彻底理解了，因为证明的过程使用了反向的思维，更加抽象。</summary></entry><entry><title type="html">mac 下使用 Wireshark 的 loopback 模式</title><link href="/blog/tech/mac/2016/07/16/wireshard-mac.html" rel="alternate" type="text/html" title="mac 下使用 Wireshark 的 loopback 模式" /><published>2016-07-16T13:06:07+02:00</published><updated>2016-07-16T13:06:07+02:00</updated><id>/blog/tech/mac/2016/07/16/wireshard-mac</id><content type="html" xml:base="/blog/tech/mac/2016/07/16/wireshard-mac.html">&lt;p&gt;如果想在本地测试，需要调到 loopbak 模式。这样就可以看到本地的通信包。&lt;/p&gt;
+
+&lt;p&gt;有时会出现找不到任何接口的状态：&lt;code class=&quot;highlighter-rouge&quot;&gt;no interface found&lt;/code&gt;
+&lt;img src=&quot;/blog/assets/img/2016-07/loopback.png&quot; alt=&quot;no interface found&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这是因为一些文件的权限被改动了，在&lt;code class=&quot;highlighter-rouge&quot;&gt;/dev&lt;/code&gt; 下有很多”bpf”文件，这些应该就是网络记录的相关文件（存疑，有待进一步考证）。所以为了用wireshark应该把权限改回来。步骤如下：
+首先是改动之前，可以看到相关文件的权限:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt; ☁  /dev  &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; bpf&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; print
+&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt;: print: No such file or directory
+crw-------  1 root  wheel   23,   0 Jun 30 13:24 bpf0
+crw-------  1 root  wheel   23,   1 Jun 30 13:24 bpf1
+crw-------  1 root  wheel   23,   2 Jul  8 18:29 bpf2
+crw-------  1 root  wheel   23,   3 Jul  8 18:29 bpf3
+crw-------  1 root  wheel   23,   4 Jul  5 03:47 bpf4
+crw-------  1 root  wheel   23,   4 Jul  5 03:47 bpf5&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;执行命令，改动之后：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;☁  /dev  &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;chmod 644 bpf&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+☁  /dev  &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; bpf&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; print
+&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt;: print: No such file or directory
+crw-r--r--  1 root  wheel   23,   0 Jun 30 13:24 bpf0
+crw-r--r--  1 root  wheel   23,   1 Jun 30 13:24 bpf1
+crw-r--r--  1 root  wheel   23,   2 Jul  8 18:29 bpf2
+crw-r--r--  1 root  wheel   23,   3 Jul  8 18:29 bpf3
+crw-r--r--  1 root  wheel   23,   4 Jul  5 03:47 bpf4
+crw-r--r--  1 root  wheel   23,   5 Jul  9 11:38 bpf5&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;这里执行命令用到了&lt;code class=&quot;highlighter-rouge&quot;&gt;chmod&lt;/code&gt;(change mode)，后面的数字是8进制数字代表了不同组的权限：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;6 -&amp;gt;二进制转换-&amp;gt; 110&lt;/li&gt;
+  &lt;li&gt;4 -&amp;gt;二进制转换-&amp;gt; 100&lt;/li&gt;
+  &lt;li&gt;4 -&amp;gt;二进制转换-&amp;gt; 100&lt;/li&gt;
+  &lt;li&gt;=&amp;gt; 644 -&amp;gt;二进制转换-&amp;gt; 110 100 100 -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;rw- r—- r—-&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;之后，问题解决：
+&lt;img src=&quot;/blog/assets/img/2016-07/loopback1.png&quot; alt=&quot;no interface found&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">如果想在本地测试，需要调到 loopbak 模式。这样就可以看到本地的通信包。</summary></entry><entry><title type="html">简单即复杂，复杂即简单</title><link href="/blog/%E6%84%9F%E6%82%9F/2015/05/26/simple-is-complex.html" rel="alternate" type="text/html" title="简单即复杂，复杂即简单" /><published>2015-05-26T13:06:07+02:00</published><updated>2015-05-26T13:06:07+02:00</updated><id>/blog/%E6%84%9F%E6%82%9F/2015/05/26/simple-is-complex</id><content type="html" xml:base="/blog/%E6%84%9F%E6%82%9F/2015/05/26/simple-is-complex.html">&lt;p&gt;这句话来源于今天一节数学理论课后的脑洞大开。&lt;/p&gt;
+
+&lt;p&gt;这句话用真实的生活例子来讲，可以比作iPhone的设计：看起来简洁美丽，用起来得心应手，简单。但是一打开机身，除了电池外就是密密麻麻的主板，这里的复杂度已经上了几个等级，复杂。但这些复杂归根到底又终究不过是电势高低，一高一低正是（1，0），如此简单。&lt;/p&gt;
+
+&lt;p&gt;如果用数学方式理解，简单就是所有的递归函数（Rekursion）都会最终“归根到底”，找到一个他最初开始的地方。复杂就是用这些“归根到底”的地方竟然能建起一座你想不到的数学大厦。数学最根本的就是逻辑学，但是讲出来实在晦涩，还是函数的例子好理解些：比如众人熟知的斐波那契数列:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/2015-05/fibonacci.pdf&quot; alt=&quot;no interface found&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;最初开始的地方就只有&lt;code class=&quot;highlighter-rouge&quot;&gt;f(1)=f(2)=1&lt;/code&gt;
+这么简单。后面不管你带入什么，都是前两个数的和。从另一个角度上来说，后面&lt;code class=&quot;highlighter-rouge&quot;&gt;f(n)&lt;/code&gt;的含义其实就是让&lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt;不断收敛，减小到最后成为1或者2折中最初的情况。&lt;/p&gt;
+
+&lt;p&gt;你可能会讲，这个又有什么复杂？但其实这个数列却解释了很多大自然的生长序列规律。首先，数列里越往后（&lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt;越大），你所得到的两个值之间的比例也就越接近黄金比例的值。进一步讲，黄金比例是自然届很多生物在生长时所运用的策略。比如大树的枝桠，海螺等。
+这些看起来复杂的东西却用一个小小两行方程解释了出来，不可谓“简单”美丽。&lt;/p&gt;
+
+&lt;p&gt;简单即复杂，复杂即简单在这时换一种说法，就是万物皆有规律，看透了即是简单，看不透即来复杂。&lt;/p&gt;
+
+&lt;p&gt;当年图灵用几个简单的方程，就创造了图灵机制（Turing-Mechanismus），绘出了奶牛身上那好像复杂没有规律的图案（见图灵论文：&lt;em&gt;The Chemical Basis of Morphogenesis&lt;/em&gt;）。而他却始终看不透人性，最终死在了自己手里，可叹可惜。&lt;/p&gt;
+
+&lt;p&gt;看透了往往是看到了这个事物的根基，看到了这个事物收敛到了一个你最初定义的维度。而那些看不透的事物，其实只是你还没有找到他的根基。在混沌机制里，简单的基础规则却会形成无比复杂的事物，一个小小的变动却会带来无比复杂的巨变。这也算是给蝴蝶效应的另一种解释吧。在数学这么“简单”的世界里，最基础的规则也许往往只有一个，造出的东西却可以让你惊叹不已，举一个非常有意思的例子，阿克曼函数(Ackermannfunktion 的变种，来自Rózsa Péter）：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/2015-05/fibonacci.pdf&quot; alt=&quot;no interface found&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这个函数只有一个收敛值，那就是在函数&lt;code class=&quot;highlighter-rouge&quot;&gt;a(n,m)&lt;/code&gt;中，一旦n等于0时，那么立即结束，返回值&lt;code class=&quot;highlighter-rouge&quot;&gt;m+1&lt;/code&gt;。后面的函数定义都是为了让&lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt;收敛到最初的函数。这么简简单单的三行定义，却大大超出了我们人类现有的计算能力。这个函数的计算复杂程度，增长超过了几乎一切函数，小小的带入值就能算出惊天的数字：&lt;code class=&quot;highlighter-rouge&quot;&gt;a(4,2)= 2 * 10 的19728次方&lt;/code&gt;。正因如此，他常被人来举证，说明有些函数是可计算算的，但是又不是“简单”的递归。&lt;/p&gt;
+
+&lt;p&gt;上面的例子也很好说明了为什么现实中很多事物如此复杂，因为他们正是建立在多多少的“初始函数”上，ackermann里一个尚且如此，那么现实中那么多会造成什么效果呢？混沌。但是这并不是我们放任不管的理由，只要我们试图解释，不断研究，混沌有一天也可能被我们所了解，我们所要做的，就是去茧抽丝，剥离一切，寻找那最初的东西。这也是为什么一个国家的学科基础研究越深，取得的成就也就越大。《三体》中智子锁死了人类的物理研究，就相当于锁死了人类进步的阶梯。&lt;/p&gt;
+
+&lt;p&gt;p.s. 对于心情浮躁的朋友们（他们很可能只看到最后一句），这片文章的结论就是，歇一下，偶尔想想为什么反而能让你心静如水。&lt;/p&gt;</content><author><name></name></author><summary type="html">这句话来源于今天一节数学理论课后的脑洞大开。</summary></entry></feed>
