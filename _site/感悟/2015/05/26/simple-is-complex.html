@@ -9,18 +9,19 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="这句话来源于今天一节数学理论课后的脑洞大开。" />
 <meta property="og:description" content="这句话来源于今天一节数学理论课后的脑洞大开。" />
-<link rel="canonical" href="http://localhost:4000/blog/%E6%84%9F%E6%82%9F/2015/05/26/simple-is-complex.html" />
-<meta property="og:url" content="http://localhost:4000/blog/%E6%84%9F%E6%82%9F/2015/05/26/simple-is-complex.html" />
+<link rel="canonical" href="http://localhost:4000/%E6%84%9F%E6%82%9F/2015/05/26/simple-is-complex.html" />
+<meta property="og:url" content="http://localhost:4000/%E6%84%9F%E6%82%9F/2015/05/26/simple-is-complex.html" />
 <meta property="og:site_name" content="沛然作雨🌧️" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2015-05-26T13:06:07+02:00" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/%E6%84%9F%E6%82%9F/2015/05/26/simple-is-complex.html"},"description":"这句话来源于今天一节数学理论课后的脑洞大开。","@type":"BlogPosting","headline":"简单即复杂，复杂即简单","dateModified":"2015-05-26T13:06:07+02:00","datePublished":"2015-05-26T13:06:07+02:00","url":"http://localhost:4000/blog/%E6%84%9F%E6%82%9F/2015/05/26/simple-is-complex.html","@context":"http://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/%E6%84%9F%E6%82%9F/2015/05/26/simple-is-complex.html"},"description":"这句话来源于今天一节数学理论课后的脑洞大开。","@type":"BlogPosting","headline":"简单即复杂，复杂即简单","dateModified":"2015-05-26T13:06:07+02:00","datePublished":"2015-05-26T13:06:07+02:00","url":"http://localhost:4000/%E6%84%9F%E6%82%9F/2015/05/26/simple-is-complex.html","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/blog/feed.xml" title="沛然作雨🌧️" /></head>
+<link rel="stylesheet" href="/assets/main.css">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/img/rain.ico?"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="沛然作雨🌧️" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">沛然作雨🌧️</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/">沛然作雨🌧️</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -32,7 +33,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/blog/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -53,7 +54,7 @@
 
 <p>如果用数学方式理解，简单就是所有的递归函数（Rekursion）都会最终“归根到底”，找到一个他最初开始的地方。复杂就是用这些“归根到底”的地方竟然能建起一座你想不到的数学大厦。数学最根本的就是逻辑学，但是讲出来实在晦涩，还是函数的例子好理解些：比如众人熟知的斐波那契数列:</p>
 
-<p><img src="http://localhost:4000/blog/assets/img/2015-05/fibonacci.pdf" alt="no interface found" /></p>
+<p><img src="http://localhost:4000/assets/img/2015-05/fibonacci.pdf" alt="no interface found" /></p>
 
 <p>最初开始的地方就只有<code class="highlighter-rouge">f(1)=f(2)=1</code>
 这么简单。后面不管你带入什么，都是前两个数的和。从另一个角度上来说，后面<code class="highlighter-rouge">f(n)</code>的含义其实就是让<code class="highlighter-rouge">n</code>不断收敛，减小到最后成为1或者2折中最初的情况。</p>
@@ -67,7 +68,7 @@
 
 <p>看透了往往是看到了这个事物的根基，看到了这个事物收敛到了一个你最初定义的维度。而那些看不透的事物，其实只是你还没有找到他的根基。在混沌机制里，简单的基础规则却会形成无比复杂的事物，一个小小的变动却会带来无比复杂的巨变。这也算是给蝴蝶效应的另一种解释吧。在数学这么“简单”的世界里，最基础的规则也许往往只有一个，造出的东西却可以让你惊叹不已，举一个非常有意思的例子，阿克曼函数(Ackermannfunktion 的变种，来自Rózsa Péter）：</p>
 
-<p><img src="http://localhost:4000/blog/assets/img/2015-05/fibonacci.pdf" alt="no interface found" /></p>
+<p><img src="http://localhost:4000/assets/img/2015-05/fibonacci.pdf" alt="no interface found" /></p>
 
 <p>这个函数只有一个收敛值，那就是在函数<code class="highlighter-rouge">a(n,m)</code>中，一旦n等于0时，那么立即结束，返回值<code class="highlighter-rouge">m+1</code>。后面的函数定义都是为了让<code class="highlighter-rouge">n</code>收敛到最初的函数。这么简简单单的三行定义，却大大超出了我们人类现有的计算能力。这个函数的计算复杂程度，增长超过了几乎一切函数，小小的带入值就能算出惊天的数字：<code class="highlighter-rouge">a(4,2)= 2 * 10 的19728次方</code>。正因如此，他常被人来举证，说明有些函数是可计算算的，但是又不是“简单”的递归。</p>
 
@@ -75,12 +76,12 @@
 
 <p>p.s. 对于心情浮躁的朋友们（他们很可能只看到最后一句），这片文章的结论就是，歇一下，偶尔想想为什么反而能让你心静如水。</p>
 
-  </div><a class="u-url" href="/blog/%E6%84%9F%E6%82%9F/2015/05/26/simple-is-complex.html" hidden></a>
+  </div><a class="u-url" href="/%E6%84%9F%E6%82%9F/2015/05/26/simple-is-complex.html" hidden></a>
 </article>
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/blog/"></data>
+  <data class="u-url" href="/"></data>
 
   <div class="wrapper">
 
@@ -92,7 +93,7 @@
           <li class="p-name">沛然作雨🌧️</li><li><a class="u-email" href="mailto:lvsun@me.com">lvsun@me.com</a></li></ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/lvsun"><svg class="svg-icon"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg> <span class="username">lvsun</span></a></li><li><a href="https://www.twitter.com/lvsun"><svg class="svg-icon"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">lvsun</span></a></li></ul>
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/lvsun"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">lvsun</span></a></li><li><a href="https://www.twitter.com/lvsun"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">lvsun</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
